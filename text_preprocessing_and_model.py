@@ -102,7 +102,6 @@ class FineTunedRobertaClassifier(nn.Module):
 def roberta_model_based_classifier(input_text : str) -> torch.Tensor:
 
     roberta_tokenizer = RobertaTokenizer.from_pretrained(r"models/roberta_model/roberta_tokenizer")
-    print("Roberta Tokenizer Loaded")
     with open(r"models/roberta_model/roberta_model_config.json", 'r') as file:
         config_file = json.load(file)
     config = RobertaConfig.from_dict(config_file)
@@ -111,12 +110,12 @@ def roberta_model_based_classifier(input_text : str) -> torch.Tensor:
     model = FineTunedRobertaClassifier(RobertaModel(config), roberta_tokenizer, num_class = 2, device = device) 
 
     model_url = r"https://drive.google.com/file/d/1_8aPwcP6mTkS0gLktVsAL1oJm1tH6Vq7/view?usp=sharing"
-    model_path = r"models\roberta_model\best_model.pth"
+    model_path = r"models/roberta_model/best_model.pth"
 
     if not os.path.exists(model_path):
         download_model(model_url, model_path)
 
-    best_model_dict = torch.load(model_path, map_location=torch.device('cpu'), weights_only=True)
+    best_model_dict = torch.load(model_path, map_location=device, weights_only=True)
 
     model.load_state_dict(best_model_dict["model_state_dict"])
     model.eval()
