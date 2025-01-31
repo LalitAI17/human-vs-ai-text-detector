@@ -52,6 +52,10 @@ def sentence_embedding_based_classifier(input_text : str):
     )
 
     model_url = r"https://drive.google.com/file/d/1JjV_F6E5CuxK8mhlUi_bK9x1JVU2AYlJ/view?usp=sharing"
+
+    # check folder exits or not - sentence_embedding_model
+    if not os.path.exists(r"models\sentence_embedding_model"):
+        os.makedirs(r"models\sentence_embedding_model", exist_ok=True)
     
     model_path = r"models\sentence_embedding_model\pipeline_svm.joblib"
 
