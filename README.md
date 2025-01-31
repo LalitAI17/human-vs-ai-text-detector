@@ -1,1 +1,0 @@
-# Human-vs-AI-Text-Detector
