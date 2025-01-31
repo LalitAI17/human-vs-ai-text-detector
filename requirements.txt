@@ -45,7 +45,6 @@ pillow==11.1.0
 preshed==3.0.9
 protobuf==5.29.3
 pyarrow==19.0.0
-PyAudio==0.2.14
 pydantic==2.5.3
 pydantic_core==2.14.6
 pydeck==0.9.1
