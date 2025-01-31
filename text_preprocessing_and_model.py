@@ -101,7 +101,7 @@ class FineTunedRobertaClassifier(nn.Module):
 
 def roberta_model_based_classifier(input_text : str) -> torch.Tensor:
 
-    roberta_tokenizer = RobertaTokenizer.from_pretrained(r"models\roberta_model\roberta_tokenizer")
+    roberta_tokenizer = RobertaTokenizer.from_pretrained(r"models/roberta_model/roberta_tokenizer")
     with open(r"models\roberta_model\roberta_model_config.json", 'r') as file:
         config_file = json.load(file)
     config = RobertaConfig.from_dict(config_file)
